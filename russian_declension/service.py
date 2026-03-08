@@ -149,7 +149,11 @@ class DeclensionService:
         t0 = time.perf_counter()
 
         if target_case == Case.NOMINATIVE:
-            return self._resp(text, text, 1.0, "passthrough", [], [])
+            result = self._resp(text, text, 1.0, "passthrough", [], [])
+            result['target_case'] = target_case
+            result['target_case_readable'] = target_case.label
+
+            return result 
 
         if entity_type == EntityType.AUTO:
             entity_type = self._detect_entity_type(text)
