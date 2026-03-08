@@ -180,9 +180,20 @@ python -m russian_declension.tests.demo
 ```bash
 curl -X POST http://localhost:8000/api/v1/inflect/batch \
   -H "Content-Type: application/json" \
-  -d @test.json
+  -d @input.json
 
 curl -X POST http://localhost:8000/api/v1/inflect \
   -H "Content-Type: application/json" \
   -d '{ "text": "Инженер-программист", "target_case": "datv" }'
+
+curl -X POST http://localhost:8000/api/v1/inflect/batch \
+  -H "Content-Type: application/json" \
+  -d '{ "items": [
+      { "text": "Общество с ограниченной ответственностью", "target_case": "nomn" }
+    , { "text": "Общество с ограниченной ответственностью", "target_case": "gent" }
+    , { "text": "Общество с ограниченной ответственностью", "target_case": "datv" }
+    , { "text": "Общество с ограниченной ответственностью", "target_case": "accs" }
+    , { "text": "Общество с ограниченной ответственностью", "target_case": "ablt" }
+    , { "text": "Общество с ограниченной ответственностью", "target_case": "loct" }
+  ]}'
 ```

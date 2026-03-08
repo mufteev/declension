@@ -1,0 +1,3004 @@
+{
+  "items": [
+    {
+      "text": "Общество с ограниченной ответственностью",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Общество с ограниченной ответственностью",
+      "target_case": "gent"
+    },
+    {
+      "text": "Общество с ограниченной ответственностью",
+      "target_case": "datv"
+    },
+    {
+      "text": "Общество с ограниченной ответственностью",
+      "target_case": "accs"
+    },
+    {
+      "text": "Общество с ограниченной ответственностью",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Общество с ограниченной ответственностью",
+      "target_case": "loct"
+    },
+    {
+      "text": "Акционерное общество",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Акционерное общество",
+      "target_case": "gent"
+    },
+    {
+      "text": "Акционерное общество",
+      "target_case": "datv"
+    },
+    {
+      "text": "Акционерное общество",
+      "target_case": "accs"
+    },
+    {
+      "text": "Акционерное общество",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Акционерное общество",
+      "target_case": "loct"
+    },
+    {
+      "text": "Публичное акционерное общество",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Публичное акционерное общество",
+      "target_case": "gent"
+    },
+    {
+      "text": "Публичное акционерное общество",
+      "target_case": "datv"
+    },
+    {
+      "text": "Публичное акционерное общество",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Публичное акционерное общество",
+      "target_case": "loct"
+    },
+    {
+      "text": "Индивидуальный предприниматель",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Индивидуальный предприниматель",
+      "target_case": "gent"
+    },
+    {
+      "text": "Индивидуальный предприниматель",
+      "target_case": "datv"
+    },
+    {
+      "text": "Индивидуальный предприниматель",
+      "target_case": "accs"
+    },
+    {
+      "text": "Индивидуальный предприниматель",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Индивидуальный предприниматель",
+      "target_case": "loct"
+    },
+    {
+      "text": "Закрытое акционерное общество",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Закрытое акционерное общество",
+      "target_case": "gent"
+    },
+    {
+      "text": "Закрытое акционерное общество",
+      "target_case": "datv"
+    },
+    {
+      "text": "Закрытое акционерное общество",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Открытое акционерное общество",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Открытое акционерное общество",
+      "target_case": "gent"
+    },
+    {
+      "text": "Открытое акционерное общество",
+      "target_case": "datv"
+    },
+    {
+      "text": "Открытое акционерное общество",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Товарищество на вере",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Товарищество на вере",
+      "target_case": "gent"
+    },
+    {
+      "text": "Товарищество на вере",
+      "target_case": "datv"
+    },
+    {
+      "text": "Товарищество на вере",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Полное товарищество",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Полное товарищество",
+      "target_case": "gent"
+    },
+    {
+      "text": "Полное товарищество",
+      "target_case": "datv"
+    },
+    {
+      "text": "Полное товарищество",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Унитарное предприятие",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Унитарное предприятие",
+      "target_case": "gent"
+    },
+    {
+      "text": "Унитарное предприятие",
+      "target_case": "datv"
+    },
+    {
+      "text": "Унитарное предприятие",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Государственное унитарное предприятие",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Государственное унитарное предприятие",
+      "target_case": "gent"
+    },
+    {
+      "text": "Государственное унитарное предприятие",
+      "target_case": "datv"
+    },
+    {
+      "text": "Государственное унитарное предприятие",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Муниципальное унитарное предприятие",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Муниципальное унитарное предприятие",
+      "target_case": "gent"
+    },
+    {
+      "text": "Муниципальное унитарное предприятие",
+      "target_case": "datv"
+    },
+    {
+      "text": "Производственный кооператив",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Производственный кооператив",
+      "target_case": "gent"
+    },
+    {
+      "text": "Производственный кооператив",
+      "target_case": "datv"
+    },
+    {
+      "text": "Производственный кооператив",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Потребительский кооператив",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Потребительский кооператив",
+      "target_case": "gent"
+    },
+    {
+      "text": "Потребительский кооператив",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Некоммерческая организация",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Некоммерческая организация",
+      "target_case": "gent"
+    },
+    {
+      "text": "Некоммерческая организация",
+      "target_case": "datv"
+    },
+    {
+      "text": "Некоммерческая организация",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Автономная некоммерческая организация",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Автономная некоммерческая организация",
+      "target_case": "gent"
+    },
+    {
+      "text": "Автономная некоммерческая организация",
+      "target_case": "datv"
+    },
+    {
+      "text": "Автономная некоммерческая организация",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Генеральный директор",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Генеральный директор",
+      "target_case": "gent"
+    },
+    {
+      "text": "Генеральный директор",
+      "target_case": "datv"
+    },
+    {
+      "text": "Генеральный директор",
+      "target_case": "accs"
+    },
+    {
+      "text": "Генеральный директор",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Генеральный директор",
+      "target_case": "loct"
+    },
+    {
+      "text": "Главный бухгалтер",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Главный бухгалтер",
+      "target_case": "gent"
+    },
+    {
+      "text": "Главный бухгалтер",
+      "target_case": "datv"
+    },
+    {
+      "text": "Главный бухгалтер",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Заместитель генерального директора",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Заместитель генерального директора",
+      "target_case": "gent"
+    },
+    {
+      "text": "Заместитель генерального директора",
+      "target_case": "datv"
+    },
+    {
+      "text": "Заместитель генерального директора",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Начальник отдела кадров",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Начальник отдела кадров",
+      "target_case": "gent"
+    },
+    {
+      "text": "Начальник отдела кадров",
+      "target_case": "datv"
+    },
+    {
+      "text": "Начальник отдела кадров",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Ведущий инженер",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Ведущий инженер",
+      "target_case": "gent"
+    },
+    {
+      "text": "Ведущий инженер",
+      "target_case": "datv"
+    },
+    {
+      "text": "Ведущий инженер",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Старший менеджер",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Старший менеджер",
+      "target_case": "gent"
+    },
+    {
+      "text": "Старший менеджер",
+      "target_case": "datv"
+    },
+    {
+      "text": "Старший менеджер",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Коммерческий директор",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Коммерческий директор",
+      "target_case": "gent"
+    },
+    {
+      "text": "Коммерческий директор",
+      "target_case": "datv"
+    },
+    {
+      "text": "Коммерческий директор",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Финансовый директор",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Финансовый директор",
+      "target_case": "gent"
+    },
+    {
+      "text": "Финансовый директор",
+      "target_case": "datv"
+    },
+    {
+      "text": "Технический директор",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Технический директор",
+      "target_case": "gent"
+    },
+    {
+      "text": "Технический директор",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Исполнительный директор",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Исполнительный директор",
+      "target_case": "gent"
+    },
+    {
+      "text": "Исполнительный директор",
+      "target_case": "datv"
+    },
+    {
+      "text": "Исполнительный директор",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Главный инженер",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Главный инженер",
+      "target_case": "gent"
+    },
+    {
+      "text": "Главный инженер",
+      "target_case": "datv"
+    },
+    {
+      "text": "Главный инженер",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Юрисконсульт",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Юрисконсульт",
+      "target_case": "gent"
+    },
+    {
+      "text": "Юрисконсульт",
+      "target_case": "datv"
+    },
+    {
+      "text": "Юрисконсульт",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Старший юрисконсульт",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Старший юрисконсульт",
+      "target_case": "gent"
+    },
+    {
+      "text": "Старший юрисконсульт",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Руководитель проекта",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Руководитель проекта",
+      "target_case": "gent"
+    },
+    {
+      "text": "Руководитель проекта",
+      "target_case": "datv"
+    },
+    {
+      "text": "Руководитель проекта",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Системный администратор",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Системный администратор",
+      "target_case": "gent"
+    },
+    {
+      "text": "Системный администратор",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Специалист по охране труда",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Специалист по охране труда",
+      "target_case": "gent"
+    },
+    {
+      "text": "Специалист по охране труда",
+      "target_case": "datv"
+    },
+    {
+      "text": "Специалист по охране труда",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Менеджер по продажам",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Менеджер по продажам",
+      "target_case": "gent"
+    },
+    {
+      "text": "Менеджер по продажам",
+      "target_case": "datv"
+    },
+    {
+      "text": "Менеджер по продажам",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Инженер-программист",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Инженер-программист",
+      "target_case": "gent"
+    },
+    {
+      "text": "Инженер-программист",
+      "target_case": "datv"
+    },
+    {
+      "text": "Инженер-программист",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Председатель правления",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Председатель правления",
+      "target_case": "gent"
+    },
+    {
+      "text": "Председатель правления",
+      "target_case": "datv"
+    },
+    {
+      "text": "Председатель правления",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Секретарь",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Секретарь",
+      "target_case": "gent"
+    },
+    {
+      "text": "Секретарь",
+      "target_case": "datv"
+    },
+    {
+      "text": "Секретарь",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Директор по развитию",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Директор по развитию",
+      "target_case": "gent"
+    },
+    {
+      "text": "Директор по развитию",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Иванов Иван Иванович",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Иванов Иван Иванович",
+      "target_case": "gent"
+    },
+    {
+      "text": "Иванов Иван Иванович",
+      "target_case": "datv"
+    },
+    {
+      "text": "Иванов Иван Иванович",
+      "target_case": "accs"
+    },
+    {
+      "text": "Иванов Иван Иванович",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Иванов Иван Иванович",
+      "target_case": "loct"
+    },
+    {
+      "text": "Петров Пётр Петрович",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Петров Пётр Петрович",
+      "target_case": "gent"
+    },
+    {
+      "text": "Петров Пётр Петрович",
+      "target_case": "datv"
+    },
+    {
+      "text": "Петров Пётр Петрович",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Сидорова Анна Михайловна",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Сидорова Анна Михайловна",
+      "target_case": "gent"
+    },
+    {
+      "text": "Сидорова Анна Михайловна",
+      "target_case": "datv"
+    },
+    {
+      "text": "Сидорова Анна Михайловна",
+      "target_case": "accs"
+    },
+    {
+      "text": "Сидорова Анна Михайловна",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Сидорова Анна Михайловна",
+      "target_case": "loct"
+    },
+    {
+      "text": "Козлов Дмитрий Сергеевич",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Козлов Дмитрий Сергеевич",
+      "target_case": "gent"
+    },
+    {
+      "text": "Козлов Дмитрий Сергеевич",
+      "target_case": "datv"
+    },
+    {
+      "text": "Козлов Дмитрий Сергеевич",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Новикова Елена Владимировна",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Новикова Елена Владимировна",
+      "target_case": "gent"
+    },
+    {
+      "text": "Новикова Елена Владимировна",
+      "target_case": "datv"
+    },
+    {
+      "text": "Новикова Елена Владимировна",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Смирнов Алексей Николаевич",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Смирнов Алексей Николаевич",
+      "target_case": "gent"
+    },
+    {
+      "text": "Смирнов Алексей Николаевич",
+      "target_case": "datv"
+    },
+    {
+      "text": "Смирнов Алексей Николаевич",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Кузнецова Мария Александровна",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Кузнецова Мария Александровна",
+      "target_case": "gent"
+    },
+    {
+      "text": "Кузнецова Мария Александровна",
+      "target_case": "datv"
+    },
+    {
+      "text": "Кузнецова Мария Александровна",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Попов Андрей Викторович",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Попов Андрей Викторович",
+      "target_case": "gent"
+    },
+    {
+      "text": "Попов Андрей Викторович",
+      "target_case": "datv"
+    },
+    {
+      "text": "Попов Андрей Викторович",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Соколова Ольга Игоревна",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Соколова Ольга Игоревна",
+      "target_case": "gent"
+    },
+    {
+      "text": "Соколова Ольга Игоревна",
+      "target_case": "datv"
+    },
+    {
+      "text": "Соколова Ольга Игоревна",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Морозов Сергей Павлович",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Морозов Сергей Павлович",
+      "target_case": "gent"
+    },
+    {
+      "text": "Морозов Сергей Павлович",
+      "target_case": "datv"
+    },
+    {
+      "text": "Морозов Сергей Павлович",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Волкова Татьяна Борисовна",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Волкова Татьяна Борисовна",
+      "target_case": "gent"
+    },
+    {
+      "text": "Волкова Татьяна Борисовна",
+      "target_case": "datv"
+    },
+    {
+      "text": "Волкова Татьяна Борисовна",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Лебедев Михаил Юрьевич",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Лебедев Михаил Юрьевич",
+      "target_case": "gent"
+    },
+    {
+      "text": "Лебедев Михаил Юрьевич",
+      "target_case": "datv"
+    },
+    {
+      "text": "Лебедев Михаил Юрьевич",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Егоров Николай Фёдорович",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Егоров Николай Фёдорович",
+      "target_case": "gent"
+    },
+    {
+      "text": "Егоров Николай Фёдорович",
+      "target_case": "datv"
+    },
+    {
+      "text": "Егоров Николай Фёдорович",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Васильева Наталья Олеговна",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Васильева Наталья Олеговна",
+      "target_case": "gent"
+    },
+    {
+      "text": "Васильева Наталья Олеговна",
+      "target_case": "datv"
+    },
+    {
+      "text": "Васильева Наталья Олеговна",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Зайцев Владимир Геннадьевич",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Зайцев Владимир Геннадьевич",
+      "target_case": "gent"
+    },
+    {
+      "text": "Зайцев Владимир Геннадьевич",
+      "target_case": "datv"
+    },
+    {
+      "text": "Зайцев Владимир Геннадьевич",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Павлова Ирина Анатольевна",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Павлова Ирина Анатольевна",
+      "target_case": "gent"
+    },
+    {
+      "text": "Павлова Ирина Анатольевна",
+      "target_case": "datv"
+    },
+    {
+      "text": "Павлова Ирина Анатольевна",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Семёнов Артём Валерьевич",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Семёнов Артём Валерьевич",
+      "target_case": "gent"
+    },
+    {
+      "text": "Семёнов Артём Валерьевич",
+      "target_case": "datv"
+    },
+    {
+      "text": "Семёнов Артём Валерьевич",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Фёдорова Светлана Дмитриевна",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Фёдорова Светлана Дмитриевна",
+      "target_case": "gent"
+    },
+    {
+      "text": "Фёдорова Светлана Дмитриевна",
+      "target_case": "datv"
+    },
+    {
+      "text": "Фёдорова Светлана Дмитриевна",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Орлов Игорь Петрович",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Орлов Игорь Петрович",
+      "target_case": "gent"
+    },
+    {
+      "text": "Орлов Игорь Петрович",
+      "target_case": "datv"
+    },
+    {
+      "text": "Орлов Игорь Петрович",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Андреева Юлия Сергеевна",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Андреева Юлия Сергеевна",
+      "target_case": "gent"
+    },
+    {
+      "text": "Андреева Юлия Сергеевна",
+      "target_case": "datv"
+    },
+    {
+      "text": "Андреева Юлия Сергеевна",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Макаров Константин Евгеньевич",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Макаров Константин Евгеньевич",
+      "target_case": "gent"
+    },
+    {
+      "text": "Макаров Константин Евгеньевич",
+      "target_case": "datv"
+    },
+    {
+      "text": "Макаров Константин Евгеньевич",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Николаева Екатерина Валентиновна",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Николаева Екатерина Валентиновна",
+      "target_case": "gent"
+    },
+    {
+      "text": "Николаева Екатерина Валентиновна",
+      "target_case": "datv"
+    },
+    {
+      "text": "Николаева Екатерина Валентиновна",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Договор купли-продажи",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Договор купли-продажи",
+      "target_case": "gent"
+    },
+    {
+      "text": "Договор купли-продажи",
+      "target_case": "datv"
+    },
+    {
+      "text": "Договор купли-продажи",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Договор купли-продажи",
+      "target_case": "loct"
+    },
+    {
+      "text": "Акт приёма-передачи",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Акт приёма-передачи",
+      "target_case": "gent"
+    },
+    {
+      "text": "Акт приёма-передачи",
+      "target_case": "datv"
+    },
+    {
+      "text": "Акт приёма-передачи",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Дополнительное соглашение",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Дополнительное соглашение",
+      "target_case": "gent"
+    },
+    {
+      "text": "Дополнительное соглашение",
+      "target_case": "datv"
+    },
+    {
+      "text": "Дополнительное соглашение",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Доверенность",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Доверенность",
+      "target_case": "gent"
+    },
+    {
+      "text": "Доверенность",
+      "target_case": "datv"
+    },
+    {
+      "text": "Доверенность",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Доверенность",
+      "target_case": "loct"
+    },
+    {
+      "text": "Свидетельство о регистрации",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Свидетельство о регистрации",
+      "target_case": "gent"
+    },
+    {
+      "text": "Свидетельство о регистрации",
+      "target_case": "datv"
+    },
+    {
+      "text": "Свидетельство о регистрации",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Приказ о назначении",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Приказ о назначении",
+      "target_case": "gent"
+    },
+    {
+      "text": "Приказ о назначении",
+      "target_case": "datv"
+    },
+    {
+      "text": "Приказ о назначении",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Протокол общего собрания",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Протокол общего собрания",
+      "target_case": "gent"
+    },
+    {
+      "text": "Протокол общего собрания",
+      "target_case": "datv"
+    },
+    {
+      "text": "Протокол общего собрания",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Трудовой договор",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Трудовой договор",
+      "target_case": "gent"
+    },
+    {
+      "text": "Трудовой договор",
+      "target_case": "datv"
+    },
+    {
+      "text": "Трудовой договор",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Лицензионное соглашение",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Лицензионное соглашение",
+      "target_case": "gent"
+    },
+    {
+      "text": "Лицензионное соглашение",
+      "target_case": "datv"
+    },
+    {
+      "text": "Лицензионное соглашение",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Счёт-фактура",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Счёт-фактура",
+      "target_case": "gent"
+    },
+    {
+      "text": "Счёт-фактура",
+      "target_case": "datv"
+    },
+    {
+      "text": "Счёт-фактура",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Накладная",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Накладная",
+      "target_case": "gent"
+    },
+    {
+      "text": "Накладная",
+      "target_case": "datv"
+    },
+    {
+      "text": "Накладная",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Товарная накладная",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Товарная накладная",
+      "target_case": "gent"
+    },
+    {
+      "text": "Товарная накладная",
+      "target_case": "datv"
+    },
+    {
+      "text": "Товарная накладная",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Платёжное поручение",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Платёжное поручение",
+      "target_case": "gent"
+    },
+    {
+      "text": "Платёжное поручение",
+      "target_case": "datv"
+    },
+    {
+      "text": "Платёжное поручение",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Выписка из реестра",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Выписка из реестра",
+      "target_case": "gent"
+    },
+    {
+      "text": "Выписка из реестра",
+      "target_case": "datv"
+    },
+    {
+      "text": "Выписка из реестра",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Решение единственного участника",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Решение единственного участника",
+      "target_case": "gent"
+    },
+    {
+      "text": "Решение единственного участника",
+      "target_case": "datv"
+    },
+    {
+      "text": "Решение единственного участника",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Устав",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Устав",
+      "target_case": "gent"
+    },
+    {
+      "text": "Устав",
+      "target_case": "datv"
+    },
+    {
+      "text": "Устав",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Устав",
+      "target_case": "loct"
+    },
+    {
+      "text": "Учредительный договор",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Учредительный договор",
+      "target_case": "gent"
+    },
+    {
+      "text": "Учредительный договор",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Гарантийное письмо",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Гарантийное письмо",
+      "target_case": "gent"
+    },
+    {
+      "text": "Гарантийное письмо",
+      "target_case": "datv"
+    },
+    {
+      "text": "Гарантийное письмо",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Коммерческое предложение",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Коммерческое предложение",
+      "target_case": "gent"
+    },
+    {
+      "text": "Коммерческое предложение",
+      "target_case": "datv"
+    },
+    {
+      "text": "Коммерческое предложение",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Служебная записка",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Служебная записка",
+      "target_case": "gent"
+    },
+    {
+      "text": "Служебная записка",
+      "target_case": "datv"
+    },
+    {
+      "text": "Служебная записка",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Заявление на отпуск",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Заявление на отпуск",
+      "target_case": "gent"
+    },
+    {
+      "text": "Заявление на отпуск",
+      "target_case": "datv"
+    },
+    {
+      "text": "Заявление на отпуск",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Справка о доходах",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Справка о доходах",
+      "target_case": "gent"
+    },
+    {
+      "text": "Справка о доходах",
+      "target_case": "datv"
+    },
+    {
+      "text": "Справка о доходах",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Акт сверки взаиморасчётов",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Акт сверки взаиморасчётов",
+      "target_case": "gent"
+    },
+    {
+      "text": "Акт сверки взаиморасчётов",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Отдел кадров",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Отдел кадров",
+      "target_case": "gent"
+    },
+    {
+      "text": "Отдел кадров",
+      "target_case": "datv"
+    },
+    {
+      "text": "Отдел кадров",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Бухгалтерия",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Бухгалтерия",
+      "target_case": "gent"
+    },
+    {
+      "text": "Бухгалтерия",
+      "target_case": "datv"
+    },
+    {
+      "text": "Бухгалтерия",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Юридический отдел",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Юридический отдел",
+      "target_case": "gent"
+    },
+    {
+      "text": "Юридический отдел",
+      "target_case": "datv"
+    },
+    {
+      "text": "Юридический отдел",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Отдел продаж",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Отдел продаж",
+      "target_case": "gent"
+    },
+    {
+      "text": "Отдел продаж",
+      "target_case": "datv"
+    },
+    {
+      "text": "Отдел продаж",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Служба безопасности",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Служба безопасности",
+      "target_case": "gent"
+    },
+    {
+      "text": "Служба безопасности",
+      "target_case": "datv"
+    },
+    {
+      "text": "Служба безопасности",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Канцелярия",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Канцелярия",
+      "target_case": "gent"
+    },
+    {
+      "text": "Канцелярия",
+      "target_case": "datv"
+    },
+    {
+      "text": "Канцелярия",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Финансовый отдел",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Финансовый отдел",
+      "target_case": "gent"
+    },
+    {
+      "text": "Финансовый отдел",
+      "target_case": "datv"
+    },
+    {
+      "text": "Финансовый отдел",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Отдел снабжения",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Отдел снабжения",
+      "target_case": "gent"
+    },
+    {
+      "text": "Отдел снабжения",
+      "target_case": "datv"
+    },
+    {
+      "text": "Отдел снабжения",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Производственный цех",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Производственный цех",
+      "target_case": "gent"
+    },
+    {
+      "text": "Производственный цех",
+      "target_case": "datv"
+    },
+    {
+      "text": "Производственный цех",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Транспортный отдел",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Транспортный отдел",
+      "target_case": "gent"
+    },
+    {
+      "text": "Транспортный отдел",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Отдел маркетинга",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Отдел маркетинга",
+      "target_case": "gent"
+    },
+    {
+      "text": "Отдел маркетинга",
+      "target_case": "datv"
+    },
+    {
+      "text": "Отдел маркетинга",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Приёмная комиссия",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Приёмная комиссия",
+      "target_case": "gent"
+    },
+    {
+      "text": "Приёмная комиссия",
+      "target_case": "datv"
+    },
+    {
+      "text": "Приёмная комиссия",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Ревизионная комиссия",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Ревизионная комиссия",
+      "target_case": "gent"
+    },
+    {
+      "text": "Ревизионная комиссия",
+      "target_case": "datv"
+    },
+    {
+      "text": "Ревизионная комиссия",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Совет директоров",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Совет директоров",
+      "target_case": "gent"
+    },
+    {
+      "text": "Совет директоров",
+      "target_case": "datv"
+    },
+    {
+      "text": "Совет директоров",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Наблюдательный совет",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Наблюдательный совет",
+      "target_case": "gent"
+    },
+    {
+      "text": "Наблюдательный совет",
+      "target_case": "datv"
+    },
+    {
+      "text": "Наблюдательный совет",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Управление делами",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Управление делами",
+      "target_case": "gent"
+    },
+    {
+      "text": "Управление делами",
+      "target_case": "datv"
+    },
+    {
+      "text": "Управление делами",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Контрольно-ревизионное управление",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Контрольно-ревизионное управление",
+      "target_case": "gent"
+    },
+    {
+      "text": "Контрольно-ревизионное управление",
+      "target_case": "datv"
+    },
+    {
+      "text": "Контрольно-ревизионное управление",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Российская Федерация",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Российская Федерация",
+      "target_case": "gent"
+    },
+    {
+      "text": "Российская Федерация",
+      "target_case": "datv"
+    },
+    {
+      "text": "Российская Федерация",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Российская Федерация",
+      "target_case": "loct"
+    },
+    {
+      "text": "Московская область",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Московская область",
+      "target_case": "gent"
+    },
+    {
+      "text": "Московская область",
+      "target_case": "datv"
+    },
+    {
+      "text": "Московская область",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Московская область",
+      "target_case": "loct"
+    },
+    {
+      "text": "Ленинградская область",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Ленинградская область",
+      "target_case": "gent"
+    },
+    {
+      "text": "Ленинградская область",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Свердловская область",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Свердловская область",
+      "target_case": "gent"
+    },
+    {
+      "text": "Свердловская область",
+      "target_case": "datv"
+    },
+    {
+      "text": "Нижегородская область",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Нижегородская область",
+      "target_case": "gent"
+    },
+    {
+      "text": "Нижегородская область",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Краснодарский край",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Краснодарский край",
+      "target_case": "gent"
+    },
+    {
+      "text": "Краснодарский край",
+      "target_case": "datv"
+    },
+    {
+      "text": "Краснодарский край",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Красноярский край",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Красноярский край",
+      "target_case": "gent"
+    },
+    {
+      "text": "Красноярский край",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Республика Татарстан",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Республика Татарстан",
+      "target_case": "gent"
+    },
+    {
+      "text": "Республика Татарстан",
+      "target_case": "datv"
+    },
+    {
+      "text": "Республика Татарстан",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Республика Башкортостан",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Республика Башкортостан",
+      "target_case": "gent"
+    },
+    {
+      "text": "Республика Башкортостан",
+      "target_case": "datv"
+    },
+    {
+      "text": "Новосибирская область",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Новосибирская область",
+      "target_case": "gent"
+    },
+    {
+      "text": "Новосибирская область",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Самарская область",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Самарская область",
+      "target_case": "gent"
+    },
+    {
+      "text": "Самарская область",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Тюменская область",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Тюменская область",
+      "target_case": "gent"
+    },
+    {
+      "text": "Тюменская область",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Ростовская область",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Ростовская область",
+      "target_case": "gent"
+    },
+    {
+      "text": "Ростовская область",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Город Москва",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Город Москва",
+      "target_case": "gent"
+    },
+    {
+      "text": "Город Москва",
+      "target_case": "datv"
+    },
+    {
+      "text": "Город Москва",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Город Москва",
+      "target_case": "loct"
+    },
+    {
+      "text": "Город Санкт-Петербург",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Город Санкт-Петербург",
+      "target_case": "gent"
+    },
+    {
+      "text": "Город Санкт-Петербург",
+      "target_case": "datv"
+    },
+    {
+      "text": "Город Санкт-Петербург",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Город Казань",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Город Казань",
+      "target_case": "gent"
+    },
+    {
+      "text": "Город Казань",
+      "target_case": "datv"
+    },
+    {
+      "text": "Город Казань",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Город Новосибирск",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Город Новосибирск",
+      "target_case": "gent"
+    },
+    {
+      "text": "Город Новосибирск",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Город Екатеринбург",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Город Екатеринбург",
+      "target_case": "gent"
+    },
+    {
+      "text": "Город Екатеринбург",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Город Нижний Новгород",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Город Нижний Новгород",
+      "target_case": "gent"
+    },
+    {
+      "text": "Город Нижний Новгород",
+      "target_case": "datv"
+    },
+    {
+      "text": "Город Нижний Новгород",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Город Ростов-на-Дону",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Город Ростов-на-Дону",
+      "target_case": "gent"
+    },
+    {
+      "text": "Город Ростов-на-Дону",
+      "target_case": "datv"
+    },
+    {
+      "text": "Город Ростов-на-Дону",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Город Владивосток",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Город Владивосток",
+      "target_case": "gent"
+    },
+    {
+      "text": "Город Владивосток",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Город Самара",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Город Самара",
+      "target_case": "gent"
+    },
+    {
+      "text": "Город Самара",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Город Красноярск",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Город Красноярск",
+      "target_case": "gent"
+    },
+    {
+      "text": "Город Красноярск",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Город Воронеж",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Город Воронеж",
+      "target_case": "gent"
+    },
+    {
+      "text": "Город Воронеж",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Стол",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Стол",
+      "target_case": "gent"
+    },
+    {
+      "text": "Стол",
+      "target_case": "datv"
+    },
+    {
+      "text": "Стол",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Стол",
+      "target_case": "loct"
+    },
+    {
+      "text": "Книга",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Книга",
+      "target_case": "gent"
+    },
+    {
+      "text": "Книга",
+      "target_case": "datv"
+    },
+    {
+      "text": "Книга",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Книга",
+      "target_case": "loct"
+    },
+    {
+      "text": "Здание",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Здание",
+      "target_case": "gent"
+    },
+    {
+      "text": "Здание",
+      "target_case": "datv"
+    },
+    {
+      "text": "Здание",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Здание",
+      "target_case": "loct"
+    },
+    {
+      "text": "Площадь",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Площадь",
+      "target_case": "gent"
+    },
+    {
+      "text": "Площадь",
+      "target_case": "datv"
+    },
+    {
+      "text": "Площадь",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Площадь",
+      "target_case": "loct"
+    },
+    {
+      "text": "Дом",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Дом",
+      "target_case": "gent"
+    },
+    {
+      "text": "Дом",
+      "target_case": "datv"
+    },
+    {
+      "text": "Дом",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Земельный участок",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Земельный участок",
+      "target_case": "gent"
+    },
+    {
+      "text": "Земельный участок",
+      "target_case": "datv"
+    },
+    {
+      "text": "Земельный участок",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Жилое помещение",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Жилое помещение",
+      "target_case": "gent"
+    },
+    {
+      "text": "Жилое помещение",
+      "target_case": "datv"
+    },
+    {
+      "text": "Жилое помещение",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Нежилое помещение",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Нежилое помещение",
+      "target_case": "gent"
+    },
+    {
+      "text": "Нежилое помещение",
+      "target_case": "datv"
+    },
+    {
+      "text": "Нежилое помещение",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Транспортное средство",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Транспортное средство",
+      "target_case": "gent"
+    },
+    {
+      "text": "Транспортное средство",
+      "target_case": "datv"
+    },
+    {
+      "text": "Транспортное средство",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Денежные средства",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Денежные средства",
+      "target_case": "gent"
+    },
+    {
+      "text": "Денежные средства",
+      "target_case": "datv"
+    },
+    {
+      "text": "Денежные средства",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Расчётный счёт",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Расчётный счёт",
+      "target_case": "gent"
+    },
+    {
+      "text": "Расчётный счёт",
+      "target_case": "datv"
+    },
+    {
+      "text": "Расчётный счёт",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Расчётный счёт",
+      "target_case": "loct"
+    },
+    {
+      "text": "Основные средства",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Основные средства",
+      "target_case": "gent"
+    },
+    {
+      "text": "Основные средства",
+      "target_case": "datv"
+    },
+    {
+      "text": "Основные средства",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Уставный капитал",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Уставный капитал",
+      "target_case": "gent"
+    },
+    {
+      "text": "Уставный капитал",
+      "target_case": "datv"
+    },
+    {
+      "text": "Уставный капитал",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Календарный день",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Календарный день",
+      "target_case": "gent"
+    },
+    {
+      "text": "Календарный день",
+      "target_case": "datv"
+    },
+    {
+      "text": "Календарный день",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Рабочий день",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Рабочий день",
+      "target_case": "gent"
+    },
+    {
+      "text": "Рабочий день",
+      "target_case": "datv"
+    },
+    {
+      "text": "Рабочий день",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Банковский день",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Банковский день",
+      "target_case": "gent"
+    },
+    {
+      "text": "Банковский день",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Налоговая инспекция",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Налоговая инспекция",
+      "target_case": "gent"
+    },
+    {
+      "text": "Налоговая инспекция",
+      "target_case": "datv"
+    },
+    {
+      "text": "Налоговая инспекция",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Арбитражный суд",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Арбитражный суд",
+      "target_case": "gent"
+    },
+    {
+      "text": "Арбитражный суд",
+      "target_case": "datv"
+    },
+    {
+      "text": "Арбитражный суд",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Районный суд",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Районный суд",
+      "target_case": "gent"
+    },
+    {
+      "text": "Районный суд",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Физическое лицо",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Физическое лицо",
+      "target_case": "gent"
+    },
+    {
+      "text": "Физическое лицо",
+      "target_case": "datv"
+    },
+    {
+      "text": "Физическое лицо",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Юридическое лицо",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Юридическое лицо",
+      "target_case": "gent"
+    },
+    {
+      "text": "Юридическое лицо",
+      "target_case": "datv"
+    },
+    {
+      "text": "Юридическое лицо",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Исполнительный орган",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Исполнительный орган",
+      "target_case": "gent"
+    },
+    {
+      "text": "Исполнительный орган",
+      "target_case": "datv"
+    },
+    {
+      "text": "Исполнительный орган",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Арендная плата",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Арендная плата",
+      "target_case": "gent"
+    },
+    {
+      "text": "Арендная плата",
+      "target_case": "datv"
+    },
+    {
+      "text": "Арендная плата",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Заработная плата",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Заработная плата",
+      "target_case": "gent"
+    },
+    {
+      "text": "Заработная плата",
+      "target_case": "datv"
+    },
+    {
+      "text": "Заработная плата",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Налог на добавленную стоимость",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Налог на добавленную стоимость",
+      "target_case": "gent"
+    },
+    {
+      "text": "Налог на добавленную стоимость",
+      "target_case": "datv"
+    },
+    {
+      "text": "Налог на добавленную стоимость",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Налог на прибыль",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Налог на прибыль",
+      "target_case": "gent"
+    },
+    {
+      "text": "Налог на прибыль",
+      "target_case": "datv"
+    },
+    {
+      "text": "Налог на прибыль",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Право собственности",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Право собственности",
+      "target_case": "gent"
+    },
+    {
+      "text": "Право собственности",
+      "target_case": "datv"
+    },
+    {
+      "text": "Право собственности",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Интеллектуальная собственность",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Интеллектуальная собственность",
+      "target_case": "gent"
+    },
+    {
+      "text": "Интеллектуальная собственность",
+      "target_case": "datv"
+    },
+    {
+      "text": "Интеллектуальная собственность",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Третейский суд",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Третейский суд",
+      "target_case": "gent"
+    },
+    {
+      "text": "Третейский суд",
+      "target_case": "datv"
+    },
+    {
+      "text": "Третейский суд",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Материальная ответственность",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Материальная ответственность",
+      "target_case": "gent"
+    },
+    {
+      "text": "Материальная ответственность",
+      "target_case": "datv"
+    },
+    {
+      "text": "Материальная ответственность",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Персональные данные",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Персональные данные",
+      "target_case": "gent"
+    },
+    {
+      "text": "Персональные данные",
+      "target_case": "datv"
+    },
+    {
+      "text": "Персональные данные",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Коммерческая тайна",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Коммерческая тайна",
+      "target_case": "gent"
+    },
+    {
+      "text": "Коммерческая тайна",
+      "target_case": "datv"
+    },
+    {
+      "text": "Коммерческая тайна",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Конфиденциальная информация",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Конфиденциальная информация",
+      "target_case": "gent"
+    },
+    {
+      "text": "Конфиденциальная информация",
+      "target_case": "datv"
+    },
+    {
+      "text": "Конфиденциальная информация",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Государственная регистрация",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Государственная регистрация",
+      "target_case": "gent"
+    },
+    {
+      "text": "Государственная регистрация",
+      "target_case": "datv"
+    },
+    {
+      "text": "Государственная регистрация",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Банковская гарантия",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Банковская гарантия",
+      "target_case": "gent"
+    },
+    {
+      "text": "Банковская гарантия",
+      "target_case": "datv"
+    },
+    {
+      "text": "Банковская гарантия",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Исковое заявление",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Исковое заявление",
+      "target_case": "gent"
+    },
+    {
+      "text": "Исковое заявление",
+      "target_case": "datv"
+    },
+    {
+      "text": "Исковое заявление",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Судебное решение",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Судебное решение",
+      "target_case": "gent"
+    },
+    {
+      "text": "Судебное решение",
+      "target_case": "datv"
+    },
+    {
+      "text": "Судебное решение",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Исполнительный лист",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Исполнительный лист",
+      "target_case": "gent"
+    },
+    {
+      "text": "Исполнительный лист",
+      "target_case": "datv"
+    },
+    {
+      "text": "Исполнительный лист",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Кадастровый номер",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Кадастровый номер",
+      "target_case": "gent"
+    },
+    {
+      "text": "Кадастровый номер",
+      "target_case": "datv"
+    },
+    {
+      "text": "Кадастровый номер",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Первый этаж",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Первый этаж",
+      "target_case": "gent"
+    },
+    {
+      "text": "Первый этаж",
+      "target_case": "datv"
+    },
+    {
+      "text": "Первый этаж",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Второй экземпляр",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Второй экземпляр",
+      "target_case": "gent"
+    },
+    {
+      "text": "Второй экземпляр",
+      "target_case": "datv"
+    },
+    {
+      "text": "Второй экземпляр",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Третья очередь",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Третья очередь",
+      "target_case": "gent"
+    },
+    {
+      "text": "Третья очередь",
+      "target_case": "datv"
+    },
+    {
+      "text": "Третья очередь",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Четвёртый квартал",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Четвёртый квартал",
+      "target_case": "gent"
+    },
+    {
+      "text": "Четвёртый квартал",
+      "target_case": "datv"
+    },
+    {
+      "text": "Четвёртый квартал",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Пятый пункт",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Пятый пункт",
+      "target_case": "gent"
+    },
+    {
+      "text": "Пятый пункт",
+      "target_case": "datv"
+    },
+    {
+      "text": "Пятый пункт",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Шестой раздел",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Шестой раздел",
+      "target_case": "gent"
+    },
+    {
+      "text": "Шестой раздел",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Седьмой параграф",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Седьмой параграф",
+      "target_case": "gent"
+    },
+    {
+      "text": "Седьмой параграф",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Восьмой том",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Восьмой том",
+      "target_case": "gent"
+    },
+    {
+      "text": "Восьмой том",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Девятый абзац",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Девятый абзац",
+      "target_case": "gent"
+    },
+    {
+      "text": "Девятый абзац",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Десятый пункт",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Десятый пункт",
+      "target_case": "gent"
+    },
+    {
+      "text": "Десятый пункт",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Двадцатый день",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Двадцатый день",
+      "target_case": "gent"
+    },
+    {
+      "text": "Двадцатый день",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Последний день месяца",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Последний день месяца",
+      "target_case": "gent"
+    },
+    {
+      "text": "Последний день месяца",
+      "target_case": "datv"
+    },
+    {
+      "text": "Последний день месяца",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Федеральная налоговая служба",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Федеральная налоговая служба",
+      "target_case": "gent"
+    },
+    {
+      "text": "Федеральная налоговая служба",
+      "target_case": "datv"
+    },
+    {
+      "text": "Федеральная налоговая служба",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Пенсионный фонд",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Пенсионный фонд",
+      "target_case": "gent"
+    },
+    {
+      "text": "Пенсионный фонд",
+      "target_case": "datv"
+    },
+    {
+      "text": "Пенсионный фонд",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Фонд социального страхования",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Фонд социального страхования",
+      "target_case": "gent"
+    },
+    {
+      "text": "Фонд социального страхования",
+      "target_case": "datv"
+    },
+    {
+      "text": "Фонд социального страхования",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Центральный банк",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Центральный банк",
+      "target_case": "gent"
+    },
+    {
+      "text": "Центральный банк",
+      "target_case": "datv"
+    },
+    {
+      "text": "Центральный банк",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Федеральная служба судебных приставов",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Федеральная служба судебных приставов",
+      "target_case": "gent"
+    },
+    {
+      "text": "Федеральная служба судебных приставов",
+      "target_case": "datv"
+    },
+    {
+      "text": "Федеральная служба судебных приставов",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Торгово-промышленная палата",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Торгово-промышленная палата",
+      "target_case": "gent"
+    },
+    {
+      "text": "Торгово-промышленная палата",
+      "target_case": "datv"
+    },
+    {
+      "text": "Торгово-промышленная палата",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Единый государственный реестр",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Единый государственный реестр",
+      "target_case": "gent"
+    },
+    {
+      "text": "Единый государственный реестр",
+      "target_case": "datv"
+    },
+    {
+      "text": "Единый государственный реестр",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Кредитная организация",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Кредитная организация",
+      "target_case": "gent"
+    },
+    {
+      "text": "Кредитная организация",
+      "target_case": "datv"
+    },
+    {
+      "text": "Кредитная организация",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Страховая компания",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Страховая компания",
+      "target_case": "gent"
+    },
+    {
+      "text": "Страховая компания",
+      "target_case": "datv"
+    },
+    {
+      "text": "Страховая компания",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Управляющая компания",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Управляющая компания",
+      "target_case": "gent"
+    },
+    {
+      "text": "Управляющая компания",
+      "target_case": "datv"
+    },
+    {
+      "text": "Управляющая компания",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Жилищно-строительный кооператив",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Жилищно-строительный кооператив",
+      "target_case": "gent"
+    },
+    {
+      "text": "Жилищно-строительный кооператив",
+      "target_case": "datv"
+    },
+    {
+      "text": "Жилищно-строительный кооператив",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Садоводческое некоммерческое товарищество",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Садоводческое некоммерческое товарищество",
+      "target_case": "gent"
+    },
+    {
+      "text": "Садоводческое некоммерческое товарищество",
+      "target_case": "datv"
+    },
+    {
+      "text": "Садоводческое некоммерческое товарищество",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Благотворительный фонд",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Благотворительный фонд",
+      "target_case": "gent"
+    },
+    {
+      "text": "Благотворительный фонд",
+      "target_case": "datv"
+    },
+    {
+      "text": "Благотворительный фонд",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Саморегулируемая организация",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Саморегулируемая организация",
+      "target_case": "gent"
+    },
+    {
+      "text": "Саморегулируемая организация",
+      "target_case": "datv"
+    },
+    {
+      "text": "Саморегулируемая организация",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Образовательное учреждение",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Образовательное учреждение",
+      "target_case": "gent"
+    },
+    {
+      "text": "Образовательное учреждение",
+      "target_case": "datv"
+    },
+    {
+      "text": "Образовательное учреждение",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Медицинская организация",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Медицинская организация",
+      "target_case": "gent"
+    },
+    {
+      "text": "Медицинская организация",
+      "target_case": "datv"
+    },
+    {
+      "text": "Медицинская организация",
+      "target_case": "ablt"
+    },
+    {
+      "text": "Религиозная организация",
+      "target_case": "nomn"
+    },
+    {
+      "text": "Религиозная организация",
+      "target_case": "gent"
+    },
+    {
+      "text": "Религиозная организация",
+      "target_case": "ablt"
+    }
+  ]
+}
