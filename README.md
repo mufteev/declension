@@ -160,3 +160,9 @@ russian_declension/
 ```bash
 python -m russian_declension.tests.demo
 ```
+
+```bash
+curl -X POST http://localhost:8000/api/v1/inflect/batch \
+  -H "Content-Type: application/json" \
+  -d @test.json
+```
