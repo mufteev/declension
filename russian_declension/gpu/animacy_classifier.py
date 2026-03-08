@@ -75,8 +75,10 @@ class AnimacyClassifier:
             torch.serialization.add_safe_globals([AnimacyMLP])
             sys.modules['__main__'].AnimacyMLP = AnimacyMLP
 
-            self._device = ("cuda" if torch.cuda.is_available()
-                            and self._device_pref != "cpu" else "cpu")
+            if self._device_pref == "auto":
+                self._device = "cuda" if torch.cuda.is_available() else "cpu"
+            else:
+                self._device = self._device_pref
 
             pt_path = self._model_path / "animacy_classifier.pt"
             if not pt_path.exists():

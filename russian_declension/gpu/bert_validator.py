@@ -58,30 +58,22 @@ class BertValidator:
     def _try_load(self):
         self._init_attempted = True
         try:
-            # Стратегия 1: Natasha Slovnet BERT (если доступен)
-            try:
-                from natasha import NewsEmbedding, NewsMorphTagger, Segmenter, Doc, MorphVocab
-                self._segmenter = Segmenter()
-                self._morph_vocab = MorphVocab()
-                self._emb = NewsEmbedding()
-                self._tagger = NewsMorphTagger(self._emb)
-                self._use_natasha = True
-                self._available = True
-                logger.info("BertValidator: Natasha морфо-тегер загружен.")
-                return
-            except ImportError:
-                pass
-
             # Стратегия 2: HuggingFace transformers pipeline
             if self._model_path and Path(self._model_path).exists():
                 from transformers import pipeline
                 import torch
-                device = 0 if torch.cuda.is_available() and self._device_preference != "cpu" else -1
+
+                # Определяем device
+                if self._device_preference == "auto":
+                    self._device = "cuda" if torch.cuda.is_available() else "cpu"
+                else:
+                    self._device = self._device_preference
+
                 self._pipeline = pipeline(
                     "token-classification",
                     model=self._model_path,
-                    device=device,
-                    torch_dtype=torch.float16 if device >= 0 else torch.float32,
+                    device=self._device,
+                    dtype=torch.float16 if self._device == 'cuda' else torch.float32,
                 )
                 self._use_natasha = False
                 self._available = True

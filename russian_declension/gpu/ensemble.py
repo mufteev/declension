@@ -33,8 +33,9 @@ class MetaEnsemble:
 
     def __init__(self, model_path: Optional[str] = None, device: str = "auto"):
         self._model_path = Path(model_path) if model_path else None
+        self._device_preference = device
         self._model = None
-        self._device = "cpu"
+        self._device = None
         self._available = False
         self._init_attempted = False
 
@@ -59,7 +60,12 @@ class MetaEnsemble:
             torch.serialization.add_safe_globals([EnsembleMLP])
             sys.modules['__main__'].EnsembleMLP = EnsembleMLP
 
-            self._device = ("cuda" if torch.cuda.is_available() else "cpu")
+            # Определяем device
+            if self._device_preference == "auto":
+                self._device = "cuda" if torch.cuda.is_available() else "cpu"
+            else:
+                self._device = self._device_preference
+
             self._model = torch.load(str(pt_path), map_location=self._device,
                                      weights_only=False)
             self._model.eval()

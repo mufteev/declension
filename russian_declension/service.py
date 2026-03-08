@@ -120,8 +120,7 @@ class DeclensionService:
         if ensemble_model_path:
             try:
                 from .gpu.ensemble import MetaEnsemble
-                self._ensemble = MetaEnsemble(
-                    model_path=ensemble_model_path)
+                self._ensemble = MetaEnsemble(model_path=ensemble_model_path, device=gpu_device)
                 if self._ensemble.is_available:
                     logger.info("GPU: MetaEnsemble активирован.")
             except Exception as exc:
