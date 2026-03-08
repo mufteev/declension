@@ -1,0 +1,24 @@
+# ═══ CPU (обязательные) ═══
+pymorphy3>=2.0.0          # Морфоанализ + генерация (~400K лексем, ~15 МБ RAM)
+pydantic>=2.0.0           # Валидация моделей
+fastapi>=0.100.0          # REST API
+uvicorn[standard]>=0.20.0 # ASGI-сервер
+
+# Фаза 2: Именованные сущности
+# (NameEngine, NumeralEngine, OrganizationEngine — используют только pymorphy3)
+
+# Фаза 3: Фразовый движок (опционально, но рекомендуется)
+natasha>=1.6.0            # Dependency parsing + морфо-теггинг (~100 МБ)
+                          # Включает: Slovnet, Navec, Yargy, Razdel
+                          # Без natasha фразовый движок работает в heuristic-режиме
+
+# ═══ GPU: План 2 (опционально, для RTX 5070) ═══
+torch>=2.0.0
+transformers>=4.30.0
+sentencepiece>=0.1.99   # Для tokenizer ruT5
+accelerate>=0.20.0      # Для FP16
+navec>=0.9.0            # Word embeddings для AnimacyClassifier
+tiktoken>=0.12.0
+protobuf>=7.34.0
+
+scikit-learn>=1.8.0
