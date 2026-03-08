@@ -23,7 +23,12 @@ GPU_DEVICE=cpu \
 python -m russian_declension.main
 
 
-RUT5_MODEL_PATH=models/rut5-declension ANIMACY_MODEL_PATH=models/animacy_v1 ENSEMBLE_MODEL_PATH=models/ensemble BERT_VALIDATOR_MODEL=models/bert GPU_DEVICE=auto python -m russian_declension.main
+RUT5_MODEL_PATH=models/rut5-declension \
+ANIMACY_MODEL_PATH=models/animacy_v1 \
+ENSEMBLE_MODEL_PATH=models/ensemble \
+BERT_VALIDATOR_MODEL=models/rubert-base-cased-conversational_ner-v3 \
+GPU_DEVICE=auto \
+python -m russian_declension.main
 ```
 
 Swagger UI доступен на `http://localhost:8000/docs`.

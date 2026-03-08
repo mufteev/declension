@@ -66,10 +66,9 @@ class DeclensionService:
         self._pymorphy = PymorphyEngine()
         self._cache = LRUCacheBackend(max_size=cache_size)
 
-        # Собираем список engine'ов для FallbackChain
         engines = [self._pymorphy]
 
-        # ── GPU: ruT5 engine (Фаза 2 Плана 2) ────────────────────
+        # ── GPU: ruT5 engine ─────────────────────────────────────
         self._rut5 = None
         if rut5_model_path:
             try:
@@ -83,15 +82,15 @@ class DeclensionService:
 
         self._chain = FallbackChain(engines=engines, cache=self._cache)
 
-        # ── Фаза 2: Именованные сущности (CPU) ───────────────────
+        # ── Фаза 2: Именованные сущности ─────────────────────────
         self._name_engine = NameEngine()
         self._numeral_engine = NumeralEngine()
         self._org_engine = OrganizationEngine()
 
-        # ── Фаза 3: Фразовый движок (CPU + опц. GPU parser) ─────
+        # ── Фаза 3: Фразовый движок ─────────────────────────────
         self._phrase_engine = PhraseEngine()
 
-        # ── GPU: Валидатор (Фаза 3 Плана 2) ──────────────────────
+        # ── GPU: BertValidator ───────────────────────────────────
         self._bert_validator = None
         if bert_validator_model:
             try:
@@ -103,7 +102,7 @@ class DeclensionService:
             except Exception as exc:
                 logger.warning("GPU: BertValidator недоступен: %s", exc)
 
-        # ── GPU: Классификатор одушевлённости (Фаза 4 Плана 2) ───
+        # ── GPU: AnimacyClassifier ───────────────────────────────
         self._animacy_clf = None
         if animacy_model_path:
             try:
@@ -115,7 +114,7 @@ class DeclensionService:
             except Exception as exc:
                 logger.warning("GPU: AnimacyClassifier недоступен: %s", exc)
 
-        # ── GPU: Мета-ансамбль (Фаза 5 Плана 2) ─────────────────
+        # ── GPU: MetaEnsemble ────────────────────────────────────
         self._ensemble = None
         if ensemble_model_path:
             try:
@@ -126,7 +125,7 @@ class DeclensionService:
             except Exception as exc:
                 logger.warning("GPU: MetaEnsemble недоступен: %s", exc)
 
-        # ── Кэш фраз ─────────────────────────────────────────────
+        # ── Кэш фраз ────────────────────────────────────────────
         self._phrase_cache: dict[str, str] = {}
 
         gpu_status = []
@@ -189,17 +188,24 @@ class DeclensionService:
         result["elapsed_ms"] = round((time.perf_counter()-t0)*1000, 2)
         return result
 
-    # ── Маршрутизация ────────────────────────────────────────────
+    # ══════════════════════════════════════════════════════════════
+    # _inflect_word — ВСЕ три GPU-компонента задействованы здесь
+    # ══════════════════════════════════════════════════════════════
 
     def _inflect_word(self, word, case, number=None, context=None):
         warnings = []
 
         # ────────────────────────────────────────────────────────
-        # Шаг 1: AnimacyClassifier для винительного падежа OOV
+        # P2: Дефисные составные слова (Инженер-программист)
         # ────────────────────────────────────────────────────────
-        # Если целевой падеж — винительный, а слово — OOV (pymorphy не уверен
-        # в одушевлённости), предсказываем одушевлённость нейросетью и
-        # переинфлектируем с явным указанием anim/inan.
+        if "-" in word and not word.startswith("-") and not word.endswith("-"):
+            result = self._inflect_hyphenated(word, case, number)
+            if result:
+                return result
+
+        # ────────────────────────────────────────────────────────
+        # GPU: AnimacyClassifier для винительного OOV
+        # ────────────────────────────────────────────────────────
         if (case == Case.ACCUSATIVE
                 and self._animacy_clf and self._animacy_clf.is_available):
             morph_info = self._pymorphy.analyze(word)
@@ -224,8 +230,7 @@ class DeclensionService:
                             "pymorphy+animacy_clf", [], warnings)
 
         # ────────────────────────────────────────────────────────
-        # Шаг 2: MetaEnsemble — если 2+ engine'а, собрать все
-        #         результаты и выбрать лучший
+        # GPU: MetaEnsemble — если 2+ engine'а
         # ────────────────────────────────────────────────────────
         if (self._ensemble and self._ensemble.is_available
                 and self._chain.engine_count >= 2):
@@ -246,7 +251,7 @@ class DeclensionService:
             ir = self._chain.inflect(word, case, number, context)
 
         # ────────────────────────────────────────────────────────
-        # Шаг 3: BertValidator — постпроверка low-confidence
+        # GPU: BertValidator — постпроверка low-confidence
         # ────────────────────────────────────────────────────────
         if (self._bert_validator and self._bert_validator.is_available
                 and ir.confidence < 0.8):
@@ -256,6 +261,64 @@ class DeclensionService:
         return self._resp(word, ir.inflected_form, ir.confidence,
                           ir.engine, [], ir.warnings)
 
+    # ── P2: Дефисные составные слова ─────────────────────────────
+
+    def _inflect_hyphenated(self, word: str, case: Case,
+                            number: Optional[Number] = None) -> Optional[dict]:
+        """
+        Склонение дефисных составных слов.
+
+        Правила:
+          - Оба компонента — самостоятельные существительные (или adj+noun) →
+            склонять ОБА: «инженер-программист» → «инженера-программиста»
+          - Первый компонент — несклоняемый / аббревиатура →
+            склонять только второй: «бизнес-план» → «бизнес-плана»
+        """
+        parts = word.split("-")
+        if len(parts) != 2:
+            # Тройной+ дефис — не обрабатываем, пусть идёт в общий конвейер
+            return None
+
+        left, right = parts
+
+        # Пробуем определить, оба ли компонента — склоняемые существительные
+        left_info = self._pymorphy.analyze(left)
+        right_info = self._pymorphy.analyze(right)
+
+        left_is_noun = left_info and left_info.is_noun
+        right_is_noun = right_info and right_info.is_noun
+
+        # Склоняем обе части, если обе — существительные
+        # (инженер-программист, генерал-лейтенант, кресло-качалка)
+        if left_is_noun and right_is_noun:
+            left_r = self._chain.inflect(left, case, number)
+            right_r = self._chain.inflect(right, case, number)
+            inflected_left = left_r.inflected_form
+            inflected_right = right_r.inflected_form
+            # Сохраняем регистр
+            if left[0].isupper() and inflected_left:
+                inflected_left = inflected_left[0].upper() + inflected_left[1:]
+            if right[0].isupper() and inflected_right:
+                inflected_right = inflected_right[0].upper() + inflected_right[1:]
+            result = f"{inflected_left}-{inflected_right}"
+            conf = min(left_r.confidence, right_r.confidence)
+            return self._resp(word, result, conf, "hyphenated_both", [], [])
+
+        # Только правая часть — существительное
+        # (бизнес-план, блок-схема, вице-президент)
+        if right_is_noun:
+            right_r = self._chain.inflect(right, case, number)
+            inflected_right = right_r.inflected_form
+            if right[0].isupper() and inflected_right:
+                inflected_right = inflected_right[0].upper() + inflected_right[1:]
+            result = f"{left}-{inflected_right}"
+            return self._resp(word, result, right_r.confidence, "hyphenated_right", [], [])
+
+        # Оба не noun / неясная структура — не обрабатываем
+        return None
+
+    # ── Имена ────────────────────────────────────────────────────
+
     def _inflect_name(self, name, case, gender=None):
         ng = {"male": NameGender.MALE, "female": NameGender.FEMALE}.get(
             gender, NameGender.UNKNOWN)
@@ -263,10 +326,14 @@ class DeclensionService:
         return self._resp(name, result, 0.9 if result != name else 0.5,
                           "name_engine", [], [])
 
+    # ── Организации ──────────────────────────────────────────────
+
     def _inflect_org(self, org, case):
         result = self._org_engine.inflect_org(org, case)
         return self._resp(org, result, 0.95 if result != org else 0.8,
                           "org_engine", [], [])
+
+    # ── Числительные ─────────────────────────────────────────────
 
     def _inflect_numeral(self, text, case):
         match = re.match(r'^(\d+)\s*(.*)$', text.strip())
@@ -277,12 +344,16 @@ class DeclensionService:
             return self._resp(text, result, 0.95, "numeral_engine", [], [])
         return self._inflect_phrase(text, case)
 
+    # ══════════════════════════════════════════════════════════════
+    # _inflect_phrase — BertValidator для постпроверки фраз
+    # ══════════════════════════════════════════════════════════════
+
     def _inflect_phrase(self, phrase, case):
         result_text = self._phrase_engine.inflect_phrase(phrase, case)
         conf = 0.85 if result_text != phrase else 0.5
         warnings = []
 
-        # BertValidator: проверяем склонение головного слова фразы
+        # BertValidator: проверяем склонение головного слова
         if (self._bert_validator and self._bert_validator.is_available
                 and conf < 0.9):
             # Извлекаем первое изменившееся слово (предполагаемая голова)
@@ -322,7 +393,7 @@ class DeclensionService:
         if len(words) == 1:
             return EntityType.WORD
         if 2 <= len(words) <= 3 and all(w[0].isupper() for w in words if w):
-            if any(w.lower().endswith(("ович","евич","ич","овна","евна","ична"))
+            if any(w.lower().endswith(("ович", "евич", "ич", "овна", "евна", "ична"))
                    for w in words):
                 return EntityType.NAME
             if any(re.search(r'(ов|ев|ёв|ин|ын|ский|цкий|ова|ева|ина|ына|ская|цкая)$',
@@ -363,7 +434,7 @@ class DeclensionService:
             gpu_components["ensemble"] = "active" if self._ensemble.is_available else "inactive"
 
         return {
-            "status": ch["status"], "version": "0.4.0",
+            "status": ch["status"], "version": "0.4.1",
             "engines": ch["engines"], "metrics": ch["metrics"],
             "gpu_components": gpu_components or "none (CPU-only)",
             "phrase_cache_size": len(self._phrase_cache),
