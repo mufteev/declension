@@ -35,6 +35,8 @@ class FallbackChain:
         )
         self._metrics["cache"] = {"calls": 0, "successes": 0, "total_ms": 0.0}
 
+    # ── Каскадное склонение (оригинальное поведение) ──────────────
+
     def inflect(
         self, word: str, target_case: Case,
         target_number: Optional[Number] = None,
@@ -58,7 +60,7 @@ class FallbackChain:
                 engine="cache", confidence=1.0,
             )
 
-        # Перебор engine'ов
+        # Перебор engine'ов (каскад: останавливаемся при достаточной уверенности)
         best_result: Optional[InflectionResult] = None
         is_fallback = False
 
@@ -103,6 +105,44 @@ class FallbackChain:
             is_fallback=True, warnings=["all_engines_failed"],
         )
 
+    # ── Параллельное склонение (для MetaEnsemble) ─────────────────
+
+    def inflect_all(
+        self, word: str, target_case: Case,
+        target_number: Optional[Number] = None,
+        context: Optional[str] = None,
+    ) -> list[InflectionResult]:
+        """
+        Прогнать слово через ВСЕ engine'ы и вернуть все результаты.
+
+        В отличие от inflect(), не останавливается на первом уверенном —
+        собирает ответы от каждого engine. Это нужно MetaEnsemble
+        для выбора лучшего результата.
+
+        Кэш НЕ проверяется (вызывающий код отвечает за кэширование).
+        """
+        results: list[InflectionResult] = []
+
+        for engine in self._engines:
+            t0 = time.perf_counter()
+            try:
+                result = engine.inflect(word, target_case, target_number, context)
+            except Exception as exc:
+                logger.error("inflect_all: engine '%s' error: %s", engine.name, exc)
+                self._metrics[engine.name]["calls"] += 1
+                continue
+
+            engine_ms = (time.perf_counter() - t0) * 1000
+            self._metrics[engine.name]["calls"] += 1
+            self._metrics[engine.name]["total_ms"] += engine_ms
+
+            if result is not None:
+                results.append(result)
+
+        return results
+
+    # ── Морфологический анализ ───────────────────────────────────
+
     def analyze(self, word: str) -> Optional[MorphInfo]:
         for engine in self._engines:
             try:
@@ -112,6 +152,8 @@ class FallbackChain:
             except Exception:
                 continue
         return None
+
+    # ── Полная парадигма ─────────────────────────────────────────
 
     def paradigm(self, word: str) -> Optional[FullParadigm]:
         cached = self._cache.get_paradigm(word)
@@ -129,6 +171,11 @@ class FallbackChain:
 
     def inflect_batch(self, items: list[tuple[str, Case, Optional[Number]]]) -> list[InflectionResult]:
         return [self.inflect(w, c, n) for w, c, n in items]
+
+    @property
+    def engine_count(self) -> int:
+        """Количество engine'ов в цепочке (нужно для решения: каскад или ансамбль)."""
+        return len(self._engines)
 
     @property
     def metrics(self) -> dict:

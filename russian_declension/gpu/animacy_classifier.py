@@ -1,45 +1,58 @@
 """
-AnimacyClassifier — нейросетевой классификатор одушевлённости для OOV-слов.
+AnimacyClassifier v2 — runtime aligned with training pipeline.
 
-Критическая проблема: одушевлённость определяет форму винительного падежа.
-Для словарных слов OpenCorpora хранит anim/inan, но для OOV это unknown.
+Загружает модель, обученную train_animacy.py:
+  models/animacy/
+  ├── animacy_classifier.pt   — AnimacyMLP (state dict saved via torch.save(model))
+  └── config.json             — гиперпараметры
 
-King & Sims (2020) показали: word embeddings снижают ошибки на 64%.
-Этот модуль использует fastText/Navec эмбеддинги + MLP-классификатор.
-
-VRAM: ~100 МБ. Скорость: <1 мс/слово.
+Feature pipeline (должен совпадать с train_animacy.py):
+  [navec_embedding(300d) ; suffix_hash(30d)] → MLP → sigmoid → anim/inan
 """
 
 from __future__ import annotations
 import logging
+import numpy as np
 from typing import Optional
 from pathlib import Path
-
 from ..core.enums import Animacy
 
 logger = logging.getLogger(__name__)
 
+EMBEDDING_DIM = 300
+SUFFIX_DIM = 30
+
+
+def _suffix_features(word: str, dim: int = SUFFIX_DIM) -> np.ndarray:
+    """Char-hash суффиксов — ИДЕНТИЧНО train_animacy.suffix_features()."""
+    features = np.zeros(dim, dtype=np.float32)
+    low = word.lower()
+    for length in range(1, 6):
+        if len(low) < length:
+            break
+        suffix = low[-length:]
+        h = hash(suffix) % dim
+        features[h] += 1.0 / length
+    norm = np.linalg.norm(features)
+    if norm > 0:
+        features /= norm
+    return features
+
 
 class AnimacyClassifier:
     """
-    Бинарный классификатор одушевлённости на базе word embeddings.
+    Бинарный классификатор одушевлённости.
 
-    Стратегия:
-      1. Получить эмбеддинг слова (fastText/Navec/word2vec)
-      2. Пропустить через обученный MLP (2 слоя, 128 hidden)
-      3. Вернуть Animacy.ANIMATE или Animacy.INANIMATE + confidence
-
-    Fallback при отсутствии модели: суффиксная эвристика.
+    Использует Navec-эмбеддинги + суффиксные char-level признаки.
+    При отсутствии модели или Navec — суффиксная эвристика.
     """
 
-    def __init__(self, model_path: Optional[str] = None,
-                 embeddings_path: Optional[str] = None,
-                 device: str = "auto"):
+    def __init__(self, model_path: Optional[str] = None, device: str = "auto"):
         self._model_path = Path(model_path) if model_path else None
-        self._embeddings_path = Path(embeddings_path) if embeddings_path else None
-        self._device = device
+        self._device_pref = device
         self._classifier = None
-        self._embeddings = None
+        self._navec = None
+        self._device = "cpu"
         self._available = False
         self._init_attempted = False
 
@@ -51,99 +64,99 @@ class AnimacyClassifier:
 
     def _try_load(self):
         self._init_attempted = True
-        if self._model_path and self._model_path.exists():
-            try:
-                import sys
-                import torch
-                from russian_declension.gpu.training.animacy import AnimacyMLP
+        if not self._model_path or not self._model_path.exists():
+            return
 
-                torch.serialization.add_safe_globals([AnimacyMLP])
-                sys.modules['__main__'].AnimacyMLP = AnimacyMLP
+        try:
+            import sys
+            import torch
+            from russian_declension.gpu.training.animacy import AnimacyMLP
 
-                device = "cuda" if torch.cuda.is_available() and self._device != "cpu" else "cpu"
-                
-                self._classifier = torch.load(
-                    self._model_path / "animacy_classifier.pt",
-                    map_location=device, 
-                    weights_only=False
-                )
+            torch.serialization.add_safe_globals([AnimacyMLP])
+            sys.modules['__main__'].AnimacyMLP = AnimacyMLP
 
-                # self._classifier = torch.load(
-                #     self._model_path / "animacy_classifier.pt",
-                #     map_location=device, weights_only=False)
-                self._classifier.eval()
-                # Загрузка эмбеддингов
-                if self._embeddings_path and self._embeddings_path.exists():
-                    import numpy as np
-                    data = np.load(str(self._embeddings_path), allow_pickle=True).item()
-                    self._embeddings = data
-                self._available = True
-                logger.info("AnimacyClassifier загружен на %s.", device)
-            except Exception as exc:
-                logger.warning("AnimacyClassifier: ошибка загрузки: %s", exc)
+            self._device = ("cuda" if torch.cuda.is_available()
+                            and self._device_pref != "cpu" else "cpu")
+
+            pt_path = self._model_path / "animacy_classifier.pt"
+            if not pt_path.exists():
+                logger.warning("AnimacyClassifier: файл %s не найден.", pt_path)
+                return
+
+            self._classifier = torch.load(str(pt_path), map_location=self._device,
+                                           weights_only=False)
+            self._classifier.eval()
+
+            # Загрузка Navec (опционально, улучшает точность)
+            self._load_navec()
+
+            self._available = True
+            logger.info("AnimacyClassifier загружен на %s (navec: %s).",
+                        self._device, "да" if self._navec else "нет")
+        except Exception as exc:
+            logger.warning("AnimacyClassifier: %s", exc)
+
+    def _load_navec(self):
+        """Попытка загрузить Navec embeddings."""
+        try:
+            from navec import Navec
+            # Ищем файл рядом с моделью или в текущей директории
+            for search_path in [self._model_path, Path(".")]:
+                for name in ["navec_hudlit_v1_12B_500K_300d_100q.tar"]:
+                    p = search_path / name
+                    if p.exists():
+                        self._navec = Navec.load(str(p))
+                        return
+            # Пробуем глобальную загрузку
+            self._navec = Navec.load("navec_hudlit_v1_12B_500K_300d_100q.tar")
+        except Exception:
+            self._navec = None
+
+    def _get_embedding(self, word: str) -> np.ndarray:
+        """Navec-эмбеддинг — ИДЕНТИЧНО train_animacy.get_word_embedding()."""
+        if self._navec is None:
+            return np.zeros(EMBEDDING_DIM, dtype=np.float32)
+        try:
+            low = word.lower()
+            for w in (word, low):
+                if w in self._navec.vocab:
+                    idx = self._navec.vocab[w]
+                    return self._navec.pq.unpack(idx).astype(np.float32)
+        except Exception:
+            pass
+        return np.zeros(EMBEDDING_DIM, dtype=np.float32)
 
     def predict(self, word: str) -> tuple[Animacy, float]:
-        """
-        Предсказать одушевлённость слова.
-
-        Returns:
-            (Animacy.ANIMATE или INANIMATE, confidence 0..1)
-        """
-        if self.is_available and self._classifier:
+        """Предсказать одушевлённость. Returns: (Animacy, confidence)."""
+        if self._available and self._classifier:
             return self._predict_neural(word)
         return self._predict_heuristic(word)
 
     def _predict_neural(self, word: str) -> tuple[Animacy, float]:
-        """Предсказание через обученную модель."""
         import torch
-        import numpy as np
 
-        # Получаем эмбеддинг
         emb = self._get_embedding(word)
-        if emb is None:
-            return self._predict_heuristic(word)
+        suf = _suffix_features(word)
+        features = np.concatenate([emb, suf])
+        tensor = torch.FloatTensor(features).unsqueeze(0).to(self._device)
 
-        tensor = torch.FloatTensor(emb).unsqueeze(0)
         with torch.no_grad():
             logit = self._classifier(tensor)
             prob = torch.sigmoid(logit).item()
 
         if prob > 0.5:
             return (Animacy.ANIMATE, prob)
-        else:
-            return (Animacy.INANIMATE, 1.0 - prob)
-
-    def _get_embedding(self, word: str):
-        """Получить word embedding."""
-        if self._embeddings and word.lower() in self._embeddings:
-            return self._embeddings[word.lower()]
-        return None
+        return (Animacy.INANIMATE, 1.0 - prob)
 
     def _predict_heuristic(self, word: str) -> tuple[Animacy, float]:
-        """
-        Суффиксная эвристика для одушевлённости (fallback).
-
-        Одушевлённые суффиксы: -тель, -ник, -чик, -щик, -ист, -ер, -ор, -ец, -арь
-        Неодушевлённые: -ость, -ение, -ание, -ство, -тие, -ция
-        """
+        """Суффиксная эвристика (fallback)."""
         low = word.lower()
-
-        animate_suffixes = [
-            "тель", "ник", "чик", "щик", "ист", "лог",
-            "граф", "навт", "вед", "ёр", "ер", "ор", "арь",
-        ]
-        inanimate_suffixes = [
-            "ость", "ение", "ание", "ство", "тие",
-            "ция", "зия", "сия", "ура", "мент", "тор",
-        ]
-
-        for suf in animate_suffixes:
+        for suf in ("тель","ник","чик","щик","ист","лог","граф","навт",
+                     "вед","ёр","ер","ор","арь","ец"):
             if low.endswith(suf):
                 return (Animacy.ANIMATE, 0.7)
-
-        for suf in inanimate_suffixes:
+        for suf in ("ость","ение","ание","ство","тие","ция","зия","сия",
+                     "ура","мент","тор","ика"):
             if low.endswith(suf):
                 return (Animacy.INANIMATE, 0.7)
-
-        # По умолчанию — неодушевлённое (статистически чаще)
         return (Animacy.INANIMATE, 0.5)

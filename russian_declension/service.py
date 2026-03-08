@@ -1,12 +1,23 @@
 """
 DeclensionService v2 — центральный оркестратор с GPU-поддержкой.
 
-План 2: GPU-компоненты подключаются «лениво» — 95% запросов обрабатываются
-CPU через кэш + pymorphy3. GPU активируется для:
-  - OOV-слов с confidence < 0.4 (ruT5 engine)
-  - Постпроверки low-confidence результатов (BERT validator)
-  - Предсказания одушевлённости для OOV (AnimacyClassifier)
-  - Ансамблирования при наличии нескольких engine'ов (MetaEnsemble)
+GPU-компоненты РЕАЛЬНО применяются в конвейере:
+
+  AnimacyClassifier.predict()
+    → в _inflect_word(), когда target_case=ACCUSATIVE и слово OOV (confidence < 0.6)
+    → предсказывает одушевлённость, чтобы правильно выбрать Вин=Род или Вин=Им
+    → вызов: pymorphy.inflect_with_agreement(word, case, animacy=predicted)
+
+  MetaEnsemble.select_best()
+    → в _inflect_word(), когда в FallbackChain 2+ engine'а
+    → вместо каскадного fallback собирает результаты от ВСЕХ engine'ов
+      через chain.inflect_all() и даёт MetaEnsemble выбрать лучший
+    → полезен когда pymorphy ошибается, а ruT5 прав (или наоборот)
+
+  BertValidator.validate_inflection_result()
+    → в _inflect_word() для low-confidence результатов (confidence < 0.8)
+    → в _inflect_phrase() для постпроверки склонения головного слова
+    → снижает confidence если BERT-тегер видит расхождение с целевым падежом
 """
 
 from __future__ import annotations
@@ -14,7 +25,7 @@ import re, time, logging
 from typing import Optional
 from enum import Enum
 
-from .core.enums import Case, Number, Gender
+from .core.enums import Case, Number, Gender, Animacy
 from .core.models import InflectionResult, FullParadigm
 from .engines.pymorphy_engine import PymorphyEngine
 from .engines.cache import LRUCacheBackend
@@ -125,7 +136,7 @@ class DeclensionService:
         if self._animacy_clf and self._animacy_clf.is_available: gpu_status.append("AnimacyCLF")
         if self._ensemble and self._ensemble.is_available: gpu_status.append("Ensemble")
         gpu_info = ", ".join(gpu_status) if gpu_status else "нет (CPU-only)"
-        logger.info("DeclensionService v2 инициализирован. GPU: %s", gpu_info)
+        logger.info("DeclensionService v2. GPU: %s", gpu_info)
 
     # ══════════════════════════════════════════════════════════════
     # Главный метод
@@ -178,13 +189,67 @@ class DeclensionService:
     # ── Маршрутизация ────────────────────────────────────────────
 
     def _inflect_word(self, word, case, number=None, context=None):
-        ir = self._chain.inflect(word, case, number, context)
+        warnings = []
 
-        # GPU: постпроверка low-confidence результатов
+        # ────────────────────────────────────────────────────────
+        # Шаг 1: AnimacyClassifier для винительного падежа OOV
+        # ────────────────────────────────────────────────────────
+        # Если целевой падеж — винительный, а слово — OOV (pymorphy не уверен
+        # в одушевлённости), предсказываем одушевлённость нейросетью и
+        # переинфлектируем с явным указанием anim/inan.
+        if (case == Case.ACCUSATIVE
+                and self._animacy_clf and self._animacy_clf.is_available):
+            morph_info = self._pymorphy.analyze(word)
+            # Условие: слово OOV (low score) или одушевлённость не определена
+            if morph_info and (morph_info.score < 0.5 or morph_info.animacy is None):
+                predicted_animacy, animacy_conf = self._animacy_clf.predict(word)
+                logger.debug("AnimacyClassifier: '%s' → %s (conf=%.2f)",
+                             word, predicted_animacy.value, animacy_conf)
+                # Если классификатор уверен — переинфлектируем с явной одушевлённостью
+                if animacy_conf > 0.6:
+                    reinflected = self._pymorphy.inflect_with_agreement(
+                        word, case,
+                        gender=morph_info.gender,
+                        number=number,
+                        animacy=predicted_animacy,
+                    )
+                    if reinflected:
+                        warnings.append(
+                            f"animacy_predicted:{predicted_animacy.value}:{animacy_conf:.2f}")
+                        return self._resp(
+                            word, reinflected, 0.75,
+                            "pymorphy+animacy_clf", [], warnings)
+
+        # ────────────────────────────────────────────────────────
+        # Шаг 2: MetaEnsemble — если 2+ engine'а, собрать все
+        #         результаты и выбрать лучший
+        # ────────────────────────────────────────────────────────
+        if (self._ensemble and self._ensemble.is_available
+                and self._chain.engine_count >= 2):
+            all_results = self._chain.inflect_all(word, case, number, context)
+            if len(all_results) >= 2:
+                best = self._ensemble.select_best(all_results, word=word)
+                logger.debug("MetaEnsemble: '%s' → selected '%s' from %s (conf=%.2f)",
+                             word, best.engine,
+                             [r.engine for r in all_results], best.confidence)
+                ir = best
+                ir.warnings.append(f"ensemble_selected_from:{len(all_results)}_engines")
+            else:
+                # Только один engine вернул результат — используем его
+                ir = all_results[0] if all_results else self._chain.inflect(
+                    word, case, number, context)
+        else:
+            # Нет ансамбля или один engine — стандартный каскад
+            ir = self._chain.inflect(word, case, number, context)
+
+        # ────────────────────────────────────────────────────────
+        # Шаг 3: BertValidator — постпроверка low-confidence
+        # ────────────────────────────────────────────────────────
         if (self._bert_validator and self._bert_validator.is_available
                 and ir.confidence < 0.8):
             ir = self._bert_validator.validate_inflection_result(ir)
 
+        ir.warnings.extend(warnings)
         return self._resp(word, ir.inflected_form, ir.confidence,
                           ir.engine, [], ir.warnings)
 
@@ -210,9 +275,37 @@ class DeclensionService:
         return self._inflect_phrase(text, case)
 
     def _inflect_phrase(self, phrase, case):
-        result = self._phrase_engine.inflect_phrase(phrase, case)
-        conf = 0.85 if result != phrase else 0.5
-        return self._resp(phrase, result, conf, "phrase_engine", [], [])
+        result_text = self._phrase_engine.inflect_phrase(phrase, case)
+        conf = 0.85 if result_text != phrase else 0.5
+        warnings = []
+
+        # BertValidator: проверяем склонение головного слова фразы
+        if (self._bert_validator and self._bert_validator.is_available
+                and conf < 0.9):
+            # Извлекаем первое изменившееся слово (предполагаемая голова)
+            orig_words = phrase.split()
+            result_words = result_text.split()
+            for ow, rw in zip(orig_words, result_words):
+                if ow != rw:
+                    # Это слово изменилось — проверяем его
+                    validation = self._bert_validator.validate(
+                        word=rw, expected_case=case,
+                        context=f"Это {result_text}."
+                    )
+
+                    if not validation["valid"]:
+                        conf *= 0.6
+                        warnings.append(
+                            f"bert_phrase_mismatch:word={rw},"
+                            f"expected={case.value},"
+                            f"predicted={validation['predicted_case']}")
+                    else:
+                        # BERT подтвердил — повышаем уверенность
+                        conf = min(conf * 1.1, 0.95)
+                        warnings.append("bert_phrase_validated")
+                    break  # Проверяем только голову
+
+        return self._resp(phrase, result_text, conf, "phrase_engine", [], warnings)
 
     # ── Автоопределение типа ─────────────────────────────────────
 

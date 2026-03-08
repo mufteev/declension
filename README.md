@@ -13,6 +13,17 @@ python -m russian_declension.main
 
 # Или через uvicorn с hot-reload (для разработки)
 uvicorn russian_declension.api.app:app --host 0.0.0.0 --port 8000 --reload
+
+
+
+RUT5_MODEL_PATH=models/rut5-declension \
+ANIMACY_MODEL_PATH=models/animacy_v1 \
+ENSEMBLE_MODEL_PATH=models/ensemble \
+GPU_DEVICE=cpu \
+python -m russian_declension.main
+
+
+RUT5_MODEL_PATH=models/rut5-declension ANIMACY_MODEL_PATH=models/animacy_v1 ENSEMBLE_MODEL_PATH=models/ensemble BERT_VALIDATOR_MODEL=models/bert GPU_DEVICE=auto python -m russian_declension.main
 ```
 
 Swagger UI доступен на `http://localhost:8000/docs`.
@@ -165,4 +176,8 @@ python -m russian_declension.tests.demo
 curl -X POST http://localhost:8000/api/v1/inflect/batch \
   -H "Content-Type: application/json" \
   -d @test.json
+
+curl -X POST http://localhost:8000/api/v1/inflect \
+  -H "Content-Type: application/json" \
+  -d '{ "text": "Инженер-программист", "target_case": "datv" }'
 ```
