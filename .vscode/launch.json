@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Debug Module",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "russian_declension.phrases.engine",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: Russian Declension",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "russian_declension.main",
+            "console": "integratedTerminal",
+            "env": {
+                "RUT5_MODEL_PATH": "models/rut5-declension",
+                "ANIMACY_MODEL_PATH": "models/animacy_v1",
+                "ENSEMBLE_MODEL_PATH": "models/ensemble_v2",
+                "BERT_VALIDATOR_MODEL": "models/rubert-base-cased-conversational_ner-v3",
+                "GPU_DEVICE": "auto"
+            }
+        }
+    ]
+}
