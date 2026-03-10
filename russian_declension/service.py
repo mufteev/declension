@@ -9,10 +9,11 @@ GPU-компоненты РЕАЛЬНО применяются в конвейе
     → вызов: pymorphy.inflect_with_agreement(word, case, animacy=predicted)
 
   MetaEnsemble.select_best()
-    → в _inflect_word(), когда в FallbackChain 2+ engine'а
+    → в _inflect_word(), когда в FallbackChain 2+ engine'а (pymorphy + ruT5)
     → вместо каскадного fallback собирает результаты от ВСЕХ engine'ов
       через chain.inflect_all() и даёт MetaEnsemble выбрать лучший
-    → полезен когда pymorphy ошибается, а ruT5 прав (или наоборот)
+    → если MetaEnsemble недоступен — выбирается результат с наибольшим confidence
+    → ruT5 участвует в выборе всегда, когда загружен, независимо от ансамбля
 
   BertValidator.validate_inflection_result()
     → в _inflect_word() для low-confidence результатов (confidence < 0.8)
@@ -88,7 +89,7 @@ class DeclensionService:
         self._org_engine = OrganizationEngine()
 
         # ── Фаза 3: Фразовый движок ─────────────────────────────
-        self._phrase_engine = PhraseEngine()
+        self._phrase_engine = PhraseEngine(rut5_engine=self._rut5)
 
         # ── GPU: BertValidator ───────────────────────────────────
         self._bert_validator = None
@@ -230,24 +231,30 @@ class DeclensionService:
                             "pymorphy+animacy_clf", [], warnings)
 
         # ────────────────────────────────────────────────────────
-        # GPU: MetaEnsemble — если 2+ engine'а
+        # Параллельный сбор результатов — если 2+ engine'а (pymorphy + ruT5)
         # ────────────────────────────────────────────────────────
-        if (self._ensemble and self._ensemble.is_available
-                and self._chain.engine_count >= 2):
+        if self._chain.engine_count >= 2:
             all_results = self._chain.inflect_all(word, case, number, context)
             if len(all_results) >= 2:
-                best = self._ensemble.select_best(all_results, word=word)
-                logger.debug("MetaEnsemble: '%s' → selected '%s' from %s (conf=%.2f)",
-                             word, best.engine,
-                             [r.engine for r in all_results], best.confidence)
+                if self._ensemble and self._ensemble.is_available:
+                    # MetaEnsemble выбирает лучший результат
+                    best = self._ensemble.select_best(all_results, word=word)
+                    logger.debug("MetaEnsemble: '%s' → selected '%s' from %s (conf=%.2f)",
+                                 word, best.engine,
+                                 [r.engine for r in all_results], best.confidence)
+                    best.warnings.append(f"ensemble_selected_from:{len(all_results)}_engines")
+                else:
+                    # Нет ансамбля — берём результат с наибольшей уверенностью
+                    best = max(all_results, key=lambda r: r.confidence)
+                    logger.debug("best_confidence: '%s' → '%s' (engine=%s, conf=%.2f)",
+                                 word, best.inflected_form, best.engine, best.confidence)
+                    best.warnings.append(f"best_of:{len(all_results)}_engines")
                 ir = best
-                ir.warnings.append(f"ensemble_selected_from:{len(all_results)}_engines")
             else:
-                # Только один engine вернул результат — используем его
                 ir = all_results[0] if all_results else self._chain.inflect(
                     word, case, number, context)
         else:
-            # Нет ансамбля или один engine — стандартный каскад
+            # Один engine — стандартный каскад
             ir = self._chain.inflect(word, case, number, context)
 
         # ────────────────────────────────────────────────────────

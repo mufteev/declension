@@ -101,8 +101,9 @@ def _restore_yo(original: str, inflected: str) -> str:
 
 
 class PhraseEngine:
-    def __init__(self):
+    def __init__(self, rut5_engine=None):
         self._morph_engine = None
+        self._rut5 = rut5_engine  # IDeclensionEngine или None — RuT5 fallback для OOV
         self._segmenter = None
         self._morph_vocab = None
         self._emb = None
@@ -196,13 +197,27 @@ class PhraseEngine:
             r = self.morph_engine.inflect(normalized, case)
             if r and r.inflected_form != normalized:
                 return _restore_yo(word, r.inflected_form)
-        return r.inflected_form if r else word
+        result = r.inflected_form if r else word
+        # RuT5 fallback: если pymorphy не смог изменить слово
+        if result == word and self._rut5 is not None and self._rut5.is_available:
+            rut5_r = self._rut5.inflect(word, case)
+            if rut5_r and rut5_r.inflected_form and self._is_sane_inflection(word, rut5_r.inflected_form):
+                logger.debug("RuT5 fallback (single): '%s' → '%s'", word, rut5_r.inflected_form)
+                return rut5_r.inflected_form
+        return result
 
     def _safe_inflect_word(self, word: str, case: Case) -> str:
         """
         Склонение слова с ё-нормализацией и санитарной проверкой результата.
         Если pymorphy возвращает мусор — fallback на нормализованную версию.
         """
+        # Попытка 3: RuT5 — для OOV и слов, которые pymorphy не смог склонить
+        if self._rut5 is not None and self._rut5.is_available:
+            rut5_r = self._rut5.inflect(word, case)
+            if rut5_r and rut5_r.inflected_form and self._is_sane_inflection(word, rut5_r.inflected_form):
+                logger.debug("RuT5 fallback (safe): '%s' → '%s'", word, rut5_r.inflected_form)
+                return rut5_r.inflected_form
+
         # Попытка 1: оригинал
         r = self.morph_engine.inflect(word, case)
         if r:
